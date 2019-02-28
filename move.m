@@ -2,16 +2,16 @@
 files = dir(fullfile('C:\\Users\\76162\\Desktop\\毕业设计\\pic\\双目2\\test4\\','*.jpg'));
 lengthFiles = length(files);
 for i = 1:lengthFiles
+    i
     Img{i} = imread(strcat('C:\\Users\\76162\\Desktop\\毕业设计\\pic\\双目2\\test4\\',files(i).name));%文件所在路径
 %   disp(strcat('C:\\Users\\76162\\Desktop\\毕业设计\\pic\\双目2\\test4\\',files(i).name)); %打印文件路径
 %   imshow(Img{i});
+    MotionBlur = pic_after(Img{i});
+    %imwrite(MotionBlur{1},strcat('./pic-after/mymotion/',files(i).name),'jpg','Comment','my motion');
+    %imwrite(MotionBlur{2},strcat('./pic-after/mymotionaccelerated/',files(i).name),'jpg','Comment','my motion accelerated');
+    imwrite(MotionBlur{3},strcat('./pic-after/mymotionvibrationbessel-A0.1/',files(i).name),'jpg','Comment','my motion vibration bessel');
+    imwrite(MotionBlur{4},strcat('./pic-after/mymotionvibrationhigh-A0.1/',files(i).name),'jpg','Comment','my motion vibration high');
+    imwrite(MotionBlur{5},strcat('./pic-after/mymotionvibrationlow-A0.1/',files(i).name),'jpg','Comment','my motion vibration low');
+    clc;
 end
-%线性运动模糊
-%fspecial()
-imshow(Img{1});
-%H = fspecial('motion',50,45);
-H = my_motion(50,45);
-MotionBlur = imfilter(Img{1},H,'replicate');
-figure(2);
-imshow(MotionBlur);
-%匀加速运动模糊
+
