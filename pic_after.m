@@ -9,13 +9,13 @@ interval = 36/N;
 %I = rgb2gray(Img);
 %imshow(Img);
 %H = fspecial('motion',50,45);
-h = my_motion(40,0);
+h = my_motion(15,0);
 MotionBlur1 = imfilter(Img,h,'replicate');
 %figure(2);
 %imshow(MotionBlur1,[]);
 %%
 %匀加速运动模糊
-v0 = 0;a = 0.1e-3;T = 100;p3 = 0;
+v0 = 0;a = 0.3e-3;T = 100;p3 = 0;
 h1 = my_motion_accelerated(T,a,v0,p3,interval);
 MotionBlur2 = imfilter(Img,h1,'replicate');
 %I1 = rgb2gray(MotionBlur2);
@@ -24,7 +24,7 @@ MotionBlur2 = imfilter(Img,h1,'replicate');
 %imshow(MotionBlur2,[]);
 %%
 %高频振动模糊
-A = 0.1;
+A = 0.4;
 MotionBlur3 = my_motion_Vibration_bessel(Img,interval,A,M,N);
 %I2 = rgb2gray(MotionBlur3);
 %figure(4);
